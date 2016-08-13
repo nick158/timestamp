@@ -45,6 +45,10 @@ function failure(res){
   res.status(200).end();
 }
 //get request with parameters
+app.get('/', function(req, res){
+  res.end();
+  return;
+});
 app.get('/:datestring', function(req, res){
   //access the parameter
   var datestring = req.params.datestring;
@@ -53,6 +57,7 @@ app.get('/:datestring', function(req, res){
   isDateString(res, datestring);
   failure(res);
   res.end();
+  return;
 });
 //listen to port with message on start
 app.listen(8080, function(){
