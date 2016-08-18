@@ -2,7 +2,8 @@ var express = require('express');
 //date format library
 var dateformat = require('dateformat');
 var app = express();
-//test variables
+//get port
+app.set('port', (process.env.PORT || 5000));
 //checks if unix
 function isUnix(res, date){
   //check if number
@@ -60,6 +61,6 @@ app.get('/:datestring', function(req, res){
   return;
 });
 //listen to port with message on start
-app.listen(8080, function(){
-  console.log("Timestamp now listening on port 8080");
+app.listen(app.get("port"), function(){
+  console.log("Timestamp now listening on port", app.get('port'));
 })
